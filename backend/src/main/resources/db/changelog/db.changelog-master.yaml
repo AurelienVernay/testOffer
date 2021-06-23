@@ -1,0 +1,45 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: aurel
+      changes:
+        - createTable:
+            tableName: person
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: firstname
+                  type: varchar(50)
+              - column:
+                  name: lastname
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: gender
+                  type: char(1)
+              - column:
+                  name: address1
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address2
+                  type: varchar(50)
+              - column:
+                  name: state
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: date_birth
+                  type: date
+                  constraints:
+                    nullable: false
+        - sql: ALTER TABLE person ADD CONSTRAINT gender_constraint CHECK (gender in ('M','F'))
